@@ -1,12 +1,25 @@
 import React, { useState } from "react"
 const ToDoList = () => {
-    const taskList = ['placeholder 1', 'placeholder 2']
+    const [taskList, setTaskList] = useState(['placeholder 1', 'placeholder 2'])
+    const [newTask, setNewTask] = useState("")
+
+    const handleNewTaskChange = (event) => {
+        setNewTask(event.target.value)
+    }
+
+    const addTask = () => {
+        setTaskList(prevTaskList => [...prevTaskList, newTask])
+        setNewTask("")
+    }
     
     return <>
         <h1 className="todo-title">To Do List</h1>
         <div>
-            <input type="text" name="add_task" placeholder="Add a task" id="add_task" className="add_task"></input>
-            <button>Add Task</button>
+            <input type="text" name="add_task" placeholder="Add a task" 
+                id="add_task" className="add_task" onChange={handleNewTaskChange} 
+                value={newTask}
+            />
+            <button className="add-btn" onClick={addTask}>Add Task</button>
         </div>
         <div>
             <ol>
