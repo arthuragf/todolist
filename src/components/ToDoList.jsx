@@ -13,13 +13,20 @@ const ToDoList = () => {
     const delTask = (index) => setTaskList(taskList.filter((_, idx) => idx !== index))
 
     const moveTaskUp = (index) => {
-        console.log(index)
         if (index <= 0 || index >= taskList.length) return
         const updatedTasks = [...taskList]
         const temp = updatedTasks[index - 1]
         updatedTasks[index - 1] = updatedTasks[index]
         updatedTasks[index] = temp
-        console.log(updatedTasks)
+        setTaskList(updatedTasks)
+    }
+
+    const moveTaskDown = (index) => {
+        if (index >= taskList.length - 1) return
+        const updatedTasks = [...taskList]
+        const temp = updatedTasks[index + 1]
+        updatedTasks[index + 1] = updatedTasks[index]
+        updatedTasks[index] = temp
         setTaskList(updatedTasks)
     }
 
@@ -37,10 +44,18 @@ const ToDoList = () => {
                 {
                     taskList.map((task, index) => 
                         <li key={index}>
-                            <span className="task-name">{task}</span>
-                            <button className="del-btn" onClick={() => delTask(index)}>Delete Task</button>
-                            <button className="up-btn" onClick={() => moveTaskUp(index)}>Move Task Up</button>
-                            <button className="down-btn">Move Task Down</button>
+                            <span className="task-name">
+                                {task}
+                            </span>
+                            <button className="del-btn" onClick={() => delTask(index)}>
+                                Delete Task
+                            </button>
+                            <button className="up-btn" onClick={() => moveTaskUp(index)}>
+                                Move Task Up
+                            </button>
+                            <button className="down-btn" onClick={() => moveTaskDown(index)}>
+                                Move Task Down
+                            </button>
                         </li>
                     )
                 }
