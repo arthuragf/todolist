@@ -3,17 +3,24 @@ const ToDoList = () => {
     const [taskList, setTaskList] = useState(['placeholder 1', 'placeholder 2'])
     const [newTask, setNewTask] = useState("")
 
-    const handleNewTaskChange = (event) => {
-        setNewTask(event.target.value)
-    }
+    const handleNewTaskChange = (event) => setNewTask(event.target.value)
 
     const addTask = () => {
         setTaskList(prevTaskList => [...prevTaskList, newTask])
         setNewTask("")
     }
 
-    const delTask = (index) => {
-        setTaskList(taskList.filter((_, idx) => idx !== index))
+    const delTask = (index) => setTaskList(taskList.filter((_, idx) => idx !== index))
+
+    const moveTaskUp = (index) => {
+        console.log(index)
+        if (index <= 0 || index >= taskList.length) return
+        const updatedTasks = [...taskList]
+        const temp = updatedTasks[index - 1]
+        updatedTasks[index - 1] = updatedTasks[index]
+        updatedTasks[index] = temp
+        console.log(updatedTasks)
+        setTaskList(updatedTasks)
     }
 
     return <>
@@ -32,7 +39,7 @@ const ToDoList = () => {
                         <li key={index}>
                             <span className="task-name">{task}</span>
                             <button className="del-btn" onClick={() => delTask(index)}>Delete Task</button>
-                            <button className="up-btn">Move Task Up</button>
+                            <button className="up-btn" onClick={() => moveTaskUp(index)}>Move Task Up</button>
                             <button className="down-btn">Move Task Down</button>
                         </li>
                     )
