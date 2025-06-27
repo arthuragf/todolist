@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+
 const ToDoList = () => {
     const [taskList, setTaskList] = useState(['placeholder 1', 'placeholder 2'])
     const [newTask, setNewTask] = useState("")
@@ -31,35 +32,38 @@ const ToDoList = () => {
     }
 
     return <>
-        <h1 className="todo-title">To Do List</h1>
-        <div>
-            <input type="text" name="add_task" placeholder="Add a task" 
-                id="add_task" className="add_task" onChange={handleNewTaskChange} 
-                value={newTask}
-            />
-            <button className="add-btn" onClick={addTask}>Add Task</button>
-        </div>
-        <div>
-            <ol>
-                {
-                    taskList.map((task, index) => 
+        <div className="app-container">
+            <h1 className="todo-title">To Do List</h1>
+            <div>
+                <input type="text" name="add_task" placeholder="Add a task" 
+                    id="add_task" className="add_task" onChange={handleNewTaskChange} 
+                    value={newTask}
+                />
+                <button className="add-btn" onClick={addTask}>Add Task</button>
+            </div>
+            <div>
+                <ol>
+                    {
+                        taskList.map((task, index) => 
                         <li key={index}>
                             <span className="task-name">
                                 {task}
                             </span>
-                            <button className="del-btn" onClick={() => delTask(index)}>
-                                Delete Task
+                            <button className="up-btn" onClick={() => moveTaskUp(index)} title="Move Task Up">
+                                ⬆️
                             </button>
-                            <button className="up-btn" onClick={() => moveTaskUp(index)}>
-                                Move Task Up
+                            <button className="down-btn" onClick={() => moveTaskDown(index)} title="Move Task Down">
+                                ⬇️
                             </button>
-                            <button className="down-btn" onClick={() => moveTaskDown(index)}>
-                                Move Task Down
+                            <button className="del-btn" onClick={() => delTask(index)} title="Delete Task">
+                                🗑️
                             </button>
                         </li>
-                    )
-                }
-            </ol>
+                        )
+                    }
+</ol>
+
+            </div>
         </div>
     </>
 }

@@ -1,10 +1,11 @@
-import TodoList from './components/ToDoList'
+import ToDoList from './components/ToDoList/ToDoList'
+import './components/ToDoList/ToDoList.css'
 
 function App() {
 
   return (
     <>
-      <TodoList />
+      <ToDoList />
     </>
   )
 }

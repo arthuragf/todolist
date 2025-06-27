@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f2f5;
+}
+
+.app-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  min-width: 400px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.add_task {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.add-btn {
+  padding: 10px 16px;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #45a049;
+}
+
+ol {
+  margin-top: 20px;
+  width: 100%;
+  list-style-position: inside;
+}
+
+li {
+  background-color: #e9ecef;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.task-name {
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+.del-btn,
+.up-btn,
+.down-btn {
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.del-btn {
+  background-color: #e74c3c;
+}
+
+.del-btn:hover {
+  background-color: #c0392b;
+}
+
+.up-btn {
+  background-color: #2980b9;
+}
+
+.up-btn:hover {
+  background-color: #2471a3;
+}
+
+.down-btn {
+  background-color: #8e44ad;
+}
+
+.down-btn:hover {
+  background-color: #7d3c98;
+}
