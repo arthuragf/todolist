@@ -11,7 +11,11 @@ const ToDoList = () => {
         setTaskList(prevTaskList => [...prevTaskList, newTask])
         setNewTask("")
     }
-    
+
+    const delTask = (index) => {
+        setTaskList(taskList.filter((_, idx) => idx !== index))
+    }
+
     return <>
         <h1 className="todo-title">To Do List</h1>
         <div>
@@ -27,7 +31,7 @@ const ToDoList = () => {
                     taskList.map((task, index) => 
                         <li key={index}>
                             <span className="task-name">{task}</span>
-                            <button className="del-btn">Delete Task</button>
+                            <button className="del-btn" onClick={() => delTask(index)}>Delete Task</button>
                             <button className="up-btn">Move Task Up</button>
                             <button className="down-btn">Move Task Down</button>
                         </li>
